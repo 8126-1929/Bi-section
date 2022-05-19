@@ -1,0 +1,31 @@
+#include<iostream>
+#include<math.h>
+#define f(x) x*x*x-x-1
+#define e 0.0001
+using namespace std;
+
+int main(){
+	float x0,x1,x,f;
+	int i=1;
+	
+	do{
+		cout<<"Enter initial roots:";
+		cin>>x0>>x1;
+	}while(f(x0)*f(x1) > 0);
+	
+	do{
+		x = ((x0 + x1)/2);
+		f = f(x);
+		if(f < 0){
+			x0 = x;
+		}else{
+			x1 = x;
+		}
+		cout<<"Iteration:"<<i++<<"\t";
+		cout<<"Root = "<<x<<"\t";
+		cout<<"Value of root:"<<f<<endl;
+	}while(fabs(f) > e);
+	cout<<"Final root is:"<<x;
+	
+	return 0;
+}
